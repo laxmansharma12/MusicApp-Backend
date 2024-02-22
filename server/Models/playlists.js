@@ -8,6 +8,16 @@ const playlistSchema = new mongoose.Schema({
 		type: String,
 		lowercase: true,
 	},
+	photo: {
+		id: {
+			type: String,
+			required: true,
+		},
+		url: {
+			type: String,
+			required: true,
+		},
+	},
 });
 
 export default mongoose.model("playlists", playlistSchema);

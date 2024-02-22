@@ -4,6 +4,8 @@ import morgan from "morgan";
 import connectDB from "./Config/db.js";
 import cors from "cors";
 import authRoutes from "./Routes/authRoutes.js";
+import playlistRoutes from "./Routes/playlistRoutes.js";
+import musicRoutes from "./Routes/musicRoutes.js";
 
 //confugure env
 dotenv.config();
@@ -22,8 +24,8 @@ app.use(morgan("dev"));
 //routes
 
 app.use("/api/v1/auth", authRoutes);
-// app.use("/api/v1/songs", songsRoutes);
-// app.use("/api/v1/playlist", playlistRoutes);
+app.use("/api/v1/music", musicRoutes);
+app.use("/api/v1/playlist", playlistRoutes);
 
 //rest api
 app.get("/", (req, res) => {
@@ -31,7 +33,7 @@ app.get("/", (req, res) => {
 });
 
 //PORT
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 //run listen
 app.listen(PORT, (req, res) => {
