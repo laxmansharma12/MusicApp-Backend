@@ -6,26 +6,19 @@ export const createMusicController = async (req, res) => {
 	try {
 		const { name, artist, playlist } = req.fields;
 		const { music, photo } = req.files;
-		// Get the path to the uploaded file
-		const photoPath = photo.path;
-		const musicPath = music.path;
+
 		//validation
-		switch (true) {
-			case !name:
-				return res.status(500).send({ error: "Name is Required" });
-			case !artist:
-				return res.status(500).send({ error: "artist is Required" });
-			case !playlist:
-				return res.status(500).send({ error: "playlist is Required" });
-		}
+		// Validation
+		if (!name || !artist || !playlist)
+			return res.send({ error: "Name, artist, and playlist are required." });
 
 		//save
-		const img = await cloudinary.uploader.upload(photoPath, {
-			folder: "MyMusicApp",
-		});
-		const audio = await cloudinary.uploader.upload(musicPath, {
+		const uploadOptions = { folder: "MyMusicApp" };
+
+		const img = await cloudinary.uploader.upload(photo.path, uploadOptions);
+		const audio = await cloudinary.uploader.upload(music.path, {
+			...uploadOptions,
 			resource_type: "raw",
-			folder: "MyMusicApp",
 		});
 
 		const songs = new SongsModel({
