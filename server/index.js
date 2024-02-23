@@ -6,6 +6,7 @@ import authRoutes from "./Routes/authRoutes.js";
 import playlistRoutes from "./Routes/playlistRoutes.js";
 import musicRoutes from "./Routes/musicRoutes.js";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 //configure env
 dotenv.config();
@@ -18,6 +19,8 @@ const app = express();
 
 //middlewares
 app.use(cors()); // Use cors middleware to handle CORS
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
 
