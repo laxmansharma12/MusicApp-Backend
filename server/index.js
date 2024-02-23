@@ -18,7 +18,7 @@ const app = express();
 
 //middlewares
 const corsOptions = {
-	origin: "http://localhost:3000",
+	origin: "https://music-app-backend-chi.vercel.app/",
 	credentials: true, //access-control-allow-credentials:true
 	optionSuccessStatus: 200,
 };
@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 });
 
 //PORT
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 //run listen
 app.listen(PORT, (req, res) => {
