@@ -8,9 +8,14 @@ export const createMusicController = async (req, res) => {
 		const { music, photo } = req.files;
 
 		//validation
-		// Validation
-		if (!name || !artist || !playlist)
-			return res.send({ error: "Name, artist, and playlist are required." });
+		switch (true) {
+			case !name:
+				return res.status(500).send({ error: "Name is Required" });
+			case !artist:
+				return res.status(500).send({ error: "artist is Required" });
+			case !playlist:
+				return res.status(500).send({ error: "playlist is Required" });
+		}
 
 		//save
 		const uploadOptions = { folder: "MyMusicApp" };
