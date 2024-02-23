@@ -2,10 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./Config/db.js";
-import cors from "cors";
 import authRoutes from "./Routes/authRoutes.js";
 import playlistRoutes from "./Routes/playlistRoutes.js";
 import musicRoutes from "./Routes/musicRoutes.js";
+import cors from "cors";
 
 //confugure env
 dotenv.config();
