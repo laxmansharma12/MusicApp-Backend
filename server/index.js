@@ -19,8 +19,8 @@ const app = express();
 
 //middlewares
 app.use(cors()); // Use cors middleware to handle CORS
-app.use(bodyParser.json({ limit: "100mb" }));
-app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));
+app.use(bodyParser.json({ limit: "1gb" }));
+app.use(bodyParser.urlencoded({ limit: "1gb", extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
 
