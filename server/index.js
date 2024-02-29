@@ -19,14 +19,11 @@ const app = express();
 
 //middlewares
 app.use(cors()); // Use cors middleware to handle CORS
-app.use(
-	bodyParser.urlencoded({
-		parameterLimit: 100000,
-		limit: "500mb",
-		extended: true,
-	})
-);
-app.use(bodyParser.json());
+
+// Express 4.0
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
+
 app.use(express.json());
 app.use(morgan("dev"));
 
