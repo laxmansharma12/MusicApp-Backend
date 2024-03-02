@@ -8,6 +8,11 @@ const playlistSchema = new mongoose.Schema({
 		type: String,
 		lowercase: true,
 	},
+	owner: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: "users",
+		required: true,
+	},
 	photo: {
 		id: {
 			type: String,

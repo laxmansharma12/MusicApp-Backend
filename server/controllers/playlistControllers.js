@@ -8,7 +8,7 @@ export const playlistController = async (req, res) => {
 		const playlist = await playlistModel.find({});
 		res.status(200).send({
 			success: true,
-			message: "All Categories List",
+			message: "All Playlists List",
 			playlist,
 		});
 	} catch (error) {
@@ -16,7 +16,7 @@ export const playlistController = async (req, res) => {
 		res.status(500).send({
 			success: false,
 			error,
-			message: "Error while getting all categories",
+			message: "Error while getting all Playlists",
 		});
 		authRoutes;
 	}
@@ -24,8 +24,8 @@ export const playlistController = async (req, res) => {
 
 export const createPlaylistController = async (req, res) => {
 	try {
-		const { name } = req.fields;
-
+		const { name, owner } = req.fields;
+		//validation
 		const { photo } = req.files;
 
 		// Get the path to the uploaded file

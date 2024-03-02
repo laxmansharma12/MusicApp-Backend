@@ -24,12 +24,6 @@ const userSchema = new mongoose.Schema(
 			type: Number,
 			default: 0,
 		},
-		myPlaylist: {
-			songs: {
-				type: mongoose.Schema.Types.ObjectId,
-				ref: "playlists",
-			},
-		},
 	},
 	{ timestamps: true }
 );
