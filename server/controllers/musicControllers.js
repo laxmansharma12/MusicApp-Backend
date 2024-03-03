@@ -94,8 +94,10 @@ export const searchMusicController = async (req, res) => {
 	try {
 		const { keyword } = req.params;
 		const results = await SongsModel.find({
-			$or: [{ name: { $regex: keyword, $options: "i" } }],
-			$or: [{ artist: { $regex: keyword, $options: "i" } }],
+			$or: [
+				{ name: { $regex: keyword, $options: "i" } },
+				{ artist: { $regex: keyword, $options: "i" } },
+			],
 		});
 		res.json(results);
 	} catch (error) {
