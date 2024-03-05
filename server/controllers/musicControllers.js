@@ -51,7 +51,7 @@ export const createMusicController = async (req, res) => {
 //get all music controller
 export const getAllMusicController = async (req, res) => {
 	try {
-		const songs = await SongsModel.find({}).sort({ createdAt: -1 });
+		const songs = await SongsModel.find({});
 		res.status(200).send({
 			success: true,
 			counTotal: songs.length,
